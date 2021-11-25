@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>PerformanceOfEverydayThings.DataStructureBenchmarks-20211125-202848</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19044.1348 (21H2)
+AMD Ryzen 9 5950X, 1 CPU, 32 logical and 16 physical cores
+.NET SDK=6.0.100
+  [Host]     : .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
+  Job-FTZBOG : .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
+</code></pre>
+<pre><code>Runtime=.NET 6.0  
+</code></pre>
+
+<table>
+<thead><tr><th>          Method</th><th>NumberOfStrings</th><th>   Mean</th><th>Error</th><th>StdDev</th><th>Ratio</th><th>RatioSD</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>FindLastStringInList</td><td>100</td><td>214.193 ns</td><td>0.7382 ns</td><td>0.6906 ns</td><td>25.84</td><td>0.13</td><td>-</td>
+</tr><tr><td>FindStringInDictionary</td><td>100</td><td>8.290 ns</td><td>0.0343 ns</td><td>0.0321 ns</td><td>1.00</td><td>0.00</td><td>-</td>
+</tr><tr><td>FindLastStringInList</td><td>1000</td><td>2,302.362 ns</td><td>11.0493 ns</td><td>10.3355 ns</td><td>293.17</td><td>1.85</td><td>-</td>
+</tr><tr><td>FindStringInDictionary</td><td>1000</td><td>7.854 ns</td><td>0.0470 ns</td><td>0.0439 ns</td><td>1.00</td><td>0.00</td><td>-</td>
+</tr><tr><td>FindLastStringInList</td><td>10000</td><td>23,859.921 ns</td><td>101.5373 ns</td><td>94.9781 ns</td><td>3,045.63</td><td>19.94</td><td>-</td>
+</tr><tr><td>FindStringInDictionary</td><td>10000</td><td>7.834 ns</td><td>0.0427 ns</td><td>0.0400 ns</td><td>1.00</td><td>0.00</td><td>-</td>
+</tr></tbody></table>
+</body>
+</html>

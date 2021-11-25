@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>PerformanceOfEverydayThings.ImperativeAndMultiThreadingBenchmarks-20211125-203041</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19044.1348 (21H2)
+AMD Ryzen 9 5950X, 1 CPU, 32 logical and 16 physical cores
+.NET SDK=6.0.100
+  [Host]     : .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
+  Job-FTZBOG : .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
+</code></pre>
+<pre><code>Runtime=.NET 6.0  
+</code></pre>
+
+<table>
+<thead><tr><th>                  Method</th><th>    Mean</th><th>  Error</th><th> StdDev</th><th>  Median</th><th>  Ratio</th><th>RatioSD</th><th>Gen 0</th><th>Gen 1</th><th>Gen 2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>CallStaticMethod</td><td>0.0046 ns</td><td>0.0008 ns</td><td>0.0008 ns</td><td>0.0043 ns</td><td>1.00</td><td>0.00</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>CallInstanceMethod</td><td>0.0804 ns</td><td>0.0007 ns</td><td>0.0007 ns</td><td>0.0802 ns</td><td>18.14</td><td>3.01</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>CallInterfaceMethod</td><td>0.6519 ns</td><td>0.0028 ns</td><td>0.0026 ns</td><td>0.6515 ns</td><td>147.06</td><td>24.72</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>CallViaOverriddenMethod</td><td>0.3195 ns</td><td>0.0028 ns</td><td>0.0027 ns</td><td>0.3197 ns</td><td>72.06</td><td>12.09</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>CallDelegate</td><td>0.6506 ns</td><td>0.0031 ns</td><td>0.0024 ns</td><td>0.6515 ns</td><td>147.53</td><td>27.17</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>InstantiateStructAndCallMethod</td><td>0.0063 ns</td><td>0.0054 ns</td><td>0.0048 ns</td><td>0.0038 ns</td><td>1.42</td><td>1.13</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>InstantiateObjectAndCallMethod</td><td>1.9335 ns</td><td>0.0174 ns</td><td>0.0162 ns</td><td>1.9354 ns</td><td>436.04</td><td>72.63</td><td>0.0014</td><td>-</td><td>-</td><td>24 B</td>
+</tr><tr><td>IncrementWithLock</td><td>4.8415 ns</td><td>0.0115 ns</td><td>0.0102 ns</td><td>4.8422 ns</td><td>1,085.22</td><td>188.24</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ThrowAndCatchException</td><td>3,622.2367 ns</td><td>42.9262 ns</td><td>40.1532 ns</td><td>3,624.9165 ns</td><td>817,164.86</td><td>138,623.31</td><td>0.0114</td><td>-</td><td>-</td><td>200 B</td>
+</tr><tr><td>IncrementOnThreadPool</td><td>1,001.3994 ns</td><td>12.6626 ns</td><td>11.8446 ns</td><td>1,006.0232 ns</td><td>225,854.27</td><td>37,941.16</td><td>0.0038</td><td>-</td><td>-</td><td>72 B</td>
+</tr><tr><td>IncrementOnNewThread</td><td>86,072.4048 ns</td><td>1,611.1480 ns</td><td>1,507.0688 ns</td><td>86,388.3179 ns</td><td>19,412,780.06</td><td>3,280,915.77</td><td>0.3662</td><td>0.3662</td><td>0.3662</td><td>136 B</td>
+</tr></tbody></table>
+</body>
+</html>

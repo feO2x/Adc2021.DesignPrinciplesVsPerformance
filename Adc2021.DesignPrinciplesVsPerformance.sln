@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SyncVsAsync.AspNetCoreServi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SyncVsAsync.WpfClient", "SyncVsAsync.WpfClient\SyncVsAsync.WpfClient.csproj", "{9C8635ED-3FA3-4EDC-87A1-BEF0F243CFC8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 WPF Data Grid", "3 WPF Data Grid", "{FF350859-544F-4996-98C4-23FB5446CC01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfDataGrid", "WpfDataGrid\WpfDataGrid.csproj", "{7F0D0731-0EFE-426A-8183-12E212B1B8E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,10 @@ Global
 		{9C8635ED-3FA3-4EDC-87A1-BEF0F243CFC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C8635ED-3FA3-4EDC-87A1-BEF0F243CFC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C8635ED-3FA3-4EDC-87A1-BEF0F243CFC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F0D0731-0EFE-426A-8183-12E212B1B8E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F0D0731-0EFE-426A-8183-12E212B1B8E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F0D0731-0EFE-426A-8183-12E212B1B8E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F0D0731-0EFE-426A-8183-12E212B1B8E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +47,7 @@ Global
 		{0D588BC1-22A4-48FB-B0F6-8FE3F72278F2} = {3575B94F-EA04-4BD1-8825-E5C1FF622D1F}
 		{C138D457-805A-49C5-BD27-7E9C2501BC0E} = {985BB4A3-83DD-45D2-BDB7-5D5EE76E51D2}
 		{9C8635ED-3FA3-4EDC-87A1-BEF0F243CFC8} = {985BB4A3-83DD-45D2-BDB7-5D5EE76E51D2}
+		{7F0D0731-0EFE-426A-8183-12E212B1B8E6} = {FF350859-544F-4996-98C4-23FB5446CC01}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9F17D587-1E8D-4C85-A8ED-30D2A800720C}

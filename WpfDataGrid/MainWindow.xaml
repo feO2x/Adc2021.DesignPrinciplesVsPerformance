@@ -3,6 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wpfDataGrid="clr-namespace:WpfDataGrid"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -10,9 +13,84 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        mc:Ignorable="d"
         Title="WPF Data Grid"
         Height="450"
-        Width="800">
-    <Grid />
+        Width="800"
+        d:DataContext="{d:DesignInstance Type=wpfDataGrid:MainWindowViewModel, IsDesignTimeCreatable=False}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="0"
+                 HorizontalAlignment="Right"
+                 Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=400}"
+                 Style="{StaticResource MaterialDesignFilledTextBox}"
+                 Width="200"
+                 Margin="12"
+                 materialDesign:TextFieldAssist.HasClearButton="True" />
+
+        <ProgressBar Grid.Row="1"
+                     IsIndeterminate="True"
+                     Visibility="{Binding LoadingIndicatorVisibility, Mode=OneWay}" />
+
+        <DataGrid x:Name="DataGrid"
+                  Grid.Row="2"
+                  ItemsSource="{Binding Contacts, Mode=OneWay}"
+                  AutoGenerateColumns="False"
+                  CanUserSortColumns="True"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  Background="Transparent">
+            <DataGrid.Columns>
+                <!-- ReSharper disable Xaml.BindingWithContextNotResolved -->
+                <DataGridTextColumn Binding="{Binding Path=Id, Mode=OneWay}"
+                                    Header="Id"
+                                    IsReadOnly="True"
+                                    Width="60">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="ID" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=FirstName, Mode=OneWay}"
+                                    Header="FirstName"
+                                    IsReadOnly="True"
+                                    Width="140">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="First Name" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=LastName, Mode=OneWay}"
+                                    Header="LastName"
+                                    IsReadOnly="True"
+                                    Width="140">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="Last Name" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=DateOfBirth, Mode=OneWay, StringFormat={}{0:yyyy-MM-dd}}"
+                                    Header="DateOfBirth"
+                                    IsReadOnly="True"
+                                    Width="140">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="Date Of Birth" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Email, Mode=OneWay}"
+                                    Header="Email"
+                                    IsReadOnly="True" />
+                <!-- ReSharper restore Xaml.BindingWithContextNotResolved -->
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
 </Window>

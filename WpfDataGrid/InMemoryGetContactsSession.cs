@@ -27,8 +27,8 @@ public sealed class InMemoryGetContactsSession : IGetContactsSession
         IEnumerable<Contact> contacts = Contacts;
         if (!searchTerm.IsNullOrWhiteSpace())
         {
-            contacts = contacts.Where(c => c.LastName.StartsWith(searchTerm) ||
-                                           c.FirstName.StartsWith(searchTerm));
+            contacts = contacts.Where(c => c.LastName.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                                           c.FirstName.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase));
         }
 
         var result = contacts.OrderBy(sortInfo)

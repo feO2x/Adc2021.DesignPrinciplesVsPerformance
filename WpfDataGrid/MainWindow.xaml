@@ -40,6 +40,7 @@
                   Grid.Row="2"
                   ItemsSource="{Binding Contacts, Mode=OneWay}"
                   AutoGenerateColumns="False"
+                  IsReadOnly="True"
                   CanUserSortColumns="True"
                   SelectionMode="Single"
                   SelectionUnit="FullRow"

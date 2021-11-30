@@ -36,10 +36,13 @@ public sealed class GetContactsOperation
                                                           ViewModel.SearchTerm,
                                                           ViewModel.SortInfo,
                                                           CancellationTokenSource.Token);
-            if (Skip == 0 || ViewModel.Contacts == null)
-                ViewModel.Contacts = contacts;
-            else
-                ViewModel.Contacts = ViewModel.Contacts.Concat(contacts).ToList();
+            if (Skip == 0)
+                ViewModel.Contacts.Clear();
+
+            foreach (var contact in contacts)
+            {
+                ViewModel.Contacts.Add(contact);
+            }
         }
         catch (OperationCanceledException exception)
         {

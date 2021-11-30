@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using Light.ViewModels;
 using Serilog;
@@ -10,7 +10,6 @@ namespace WpfDataGrid;
 public sealed class MainWindowViewModel : BaseNotifyPropertyChanged
 {
     public const int Take = 50;
-    private List<Contact>? _contacts;
     private string _searchTerm = string.Empty;
     private SortInfo _sortInfo = new (nameof(Contact.Id), true);
     private GetContactsOperation? _currentOperation;
@@ -36,12 +35,8 @@ public sealed class MainWindowViewModel : BaseNotifyPropertyChanged
         }
     }
 
-    public List<Contact>? Contacts
-    {
-        get => _contacts;
-        set => SetIfDifferent(ref _contacts, value);
-    }
-
+    public ObservableCollection<Contact> Contacts { get; } = new ();
+    
     public string SearchTerm
     {
         get => _searchTerm;
